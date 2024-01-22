@@ -13,19 +13,23 @@ def is_prime(n):
     return len(divs(n)) == 2
 
 
+primes = []
+for i in range(2, 160):
+    if is_prime(i):
+        primes.append(i)
+
+
 for n in range(100, 10000 + 1):
     t = n
-    i = 2
+    i = 0
     k = 0
-    last_i = i
-    while t and t >= i:
-        if t % i == 0:
+    last_i = primes[i]
+    while t > 1 and i < len(primes):
+        if t % primes[i] == 0:
             k += 1
-            t //= i
-            last_i = i
+            t //= primes[i]
+            last_i = primes[i]
         else:
             i += 1
-            while not is_prime(i):
-                i += 1
     if k == 7 and fullmatch(r'\d*2\d2', str(n)):
         print(n, last_i)
