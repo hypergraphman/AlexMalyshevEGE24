@@ -13,6 +13,5 @@ def f(s, c, m):
 for s in range(11, 250 + 1):
     for m in range(1, 4 + 1):
         if f(s, 0, m):
-
             print(s, m)
             break
