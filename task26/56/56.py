@@ -5,9 +5,11 @@ disks = [v] * d
 fail_files = []
 while files:
     file = files.pop()
+    j = 0
     for i in range(len(disks)):
-        if disks[i] >= file:
-            disks[i] -= file
+        if disks[(i + j) % d] >= file:
+            disks[(i + j) % d] -= file
+            j = i
             break
     else:
         fail_files.append(file)
